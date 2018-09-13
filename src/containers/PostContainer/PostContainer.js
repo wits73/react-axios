@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { PostWrapper, Navigate, Post, Warning } from '../../components';
+import { PostWrapper, Navigate, Post, Warning, Header } from '../../components/comPost';
 import * as service from '../../services/post';
 
 class PostContainer extends Component {
@@ -99,6 +99,7 @@ class PostContainer extends Component {
 
         return (
             <PostWrapper>
+                <Header/>
                 <Navigate 
                     postId={postId}
                     disabled={fetching}

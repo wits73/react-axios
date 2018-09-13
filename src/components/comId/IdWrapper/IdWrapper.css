@@ -1,0 +1,10 @@
+.IdWrapper {
+    width: 50rem;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .IdWrapper {
+        width: 90%;    
+    }
+}

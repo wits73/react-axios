@@ -6,12 +6,7 @@ class Result extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            result: {
-                pidm:null,
-                ksuid:null,
-                netid:null,
-                name:null
-            },
+            result: [],
             animate: false,
             direction: 'left'
         }
@@ -19,8 +14,8 @@ class Result extends Component {
 
     
     render() {
-        const { pidm, ksuid, netid, name } = this.props.result;
-        console.log(pidm);
+        const  resultList = this.props.result;
+        console.log(resultList.length);
         const { animate, direction } = this.state;
 
         return (
@@ -33,12 +28,15 @@ class Result extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>{pidm}</td>
-                        <td>{ksuid}</td>
-                        <td>{netid}</td>
-                        <td>{name}</td>
-                    </tr>
+                    {resultList.map((item, i) => {
+                    return (
+                        <tr key={i}>
+                            <td>{item.pidm}</td>
+                            <td>{item.ksuid}</td>
+                            <td>{item.netid}</td>
+                            <td>{item.name}</td>
+                        </tr>);
+                    })}
                 </tbody>
             </table>
         );

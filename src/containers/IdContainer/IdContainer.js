@@ -9,12 +9,7 @@ class IdContainer extends Component {
         // initializes component state
         this.state = {
             fetching: false, // tells whether the request is waiting for response or not
-            result: [{
-                pidm: null,
-                ksuid: null,
-                netid: null,
-                name: null,
-            }],
+            result: [],
             warningVisibility: false
         };
     }
@@ -28,27 +23,21 @@ class IdContainer extends Component {
             fetching: true // requesting..
         });
 
+        //const { result } = this.state.result;
+
         try {
             // wait for promises
             const info = await Promise.all([
                 service.getResult(target, keyword),
             ]);
 
-            console.log(info);
-            // Object destructuring Syntax,
-            // takes out required values and create references to them
-            const { pidm, ksuid, netid, name } = info[0].data[0];
+            //console.log(info[0].data);
 
             this.setState({
-                result: {
-                    pidm,
-                    ksuid,
-                    netid,
-                    name
-                },
+                result: info[0].data,
                 fetching: false // done!
             });
-            console.log(this.state.result);
+            // console.log(this.state.result);
         } catch (e) {
             // if err, stop at this point
             this.setState({
